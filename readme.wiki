@@ -1,0 +1,61 @@
+### Configuration
+
+In your `config/bootstrap/libraries.php` add this line:
+
+{{{
+Libraries::add('li3_swiftmailer');
+}}}
+
+And then configure who do you want to use the Mailer using `li3_swiftmailer\mailer\Transport`.
+
+#### SMTP
+
+{{{
+Transport::config(array('default' => array(
+    'adapter' => 'Smtp',
+    'host' => 'smtp.google.com',
+    'port' => 587,
+    'secure' => 'tls',
+    'username' => 'you@gmail.com',
+    'password' => '#########'
+)));
+}}}
+
+#### Sendmail
+
+{{{
+Transport::config(array('default' => array(
+    'adapter' => 'Sendmail',
+    'command' => '/usb/sbin/sendmail -bs -i'
+)));
+}}}
+
+#### PHP `mail()`
+
+{{{
+Transport::config(array('default' => array(
+    'adapter' => 'PhpMail'
+)));
+}}}
+
+### Usage
+
+{{{
+$mailer = Transport::get('default');
+$message = Message::newInstance()
+                  ->setSubject('Hello world')
+                  ->setFrom(array('yoan.blanc@gmail.com' => 'Yoan Blanc'))
+                  ->setTo(array(
+                      'yoan@dosimple.ch' => 'Yoan Blanc',
+                      'matt@qoqa.ch' => 'Matthieu Houriet'
+                  ))
+                  ->setBody('Hello world!');
+echo $mailer->send($message) ? "success" : "fail";
+}}}
+
+**More info**
+
+ - [ Transport](li3_swiftmailer/mailer/Transport)
+ - [ Smtp](li3_swiftmailer/extensions/adapter/mailer/transport/Smtp)
+ - [ Sendmail](li3_swiftmailer/extensions/adapter/mailer/transport/Sendmail)
+ - [ PhpMail](li3_swiftmailer/extensions/adapter/mailer/transport/PhpMail)
