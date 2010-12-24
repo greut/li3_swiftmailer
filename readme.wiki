@@ -15,7 +15,7 @@ Transport::config(array('default' => array(
     'adapter' => 'Smtp',
     'host' => 'smtp.google.com',
     'port' => 587,
-    'secure' => 'tls',
+    'encryption' => 'tls',
     'username' => 'you@gmail.com',
     'password' => '#########'
 )));
@@ -44,10 +44,10 @@ Transport::config(array('default' => array(
 $mailer = Transport::get('default');
 $message = Message::newInstance()
                   ->setSubject('Hello world')
-                  ->setFrom(array('yoan.blanc@gmail.com' => 'Yoan Blanc'))
+                  ->setFrom(array('john.doe@example.org' => 'John Doe'))
                   ->setTo(array(
-                      'yoan@dosimple.ch' => 'Yoan Blanc',
-                      'matt@qoqa.ch' => 'Matthieu Houriet'
+                      'jane.doe@example.org' => 'Jane Doe',
+                      'foo.bar@example.org' => 'Foo Bar'
                   ))
                   ->setBody('Hello world!');
 echo $mailer->send($message) ? "success" : "fail";
