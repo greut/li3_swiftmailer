@@ -11,7 +11,9 @@ And then configure who do you want to use the Mailer using `li3_swiftmailer\mail
 #### SMTP
 
 {{{
-Transport::config(array('default' => array(
+use li3_swiftmailer\mailer\Transports;
+
+Transports::config(array('default' => array(
     'adapter' => 'Smtp',
     'host' => 'smtp.google.com',
     'port' => 587,
@@ -24,7 +26,9 @@ Transport::config(array('default' => array(
 #### Sendmail
 
 {{{
-Transport::config(array('default' => array(
+use li3_swiftmailer\mailer\Transports;
+
+Transports::config(array('default' => array(
     'adapter' => 'Sendmail',
     'command' => '/usb/sbin/sendmail -bs -i'
 )));
@@ -33,15 +37,32 @@ Transport::config(array('default' => array(
 #### PHP `mail()`
 
 {{{
-Transport::config(array('default' => array(
+use li3_swiftmailer\mailer\Transports;
+
+Transports::config(array('default' => array(
     'adapter' => 'PhpMail'
+)));
+}}}
+
+#### Multi-env system
+
+{{{
+use li3_swiftmailer\mailer\Transports;
+
+Transports::config(array('default' => array(
+    'production' => array(/* … */),
+    'development' => array(/* … */),
+    'test' => array(/* … */)
 )));
 }}}
 
 ### Usage
 
 {{{
-$mailer = Transport::get('default');
+use li3_swiftmailer\mailer\Transports;
+use li3_swiftmailer\mailer\Message;
+
+$mailer = Transports::get('default');
 $message = Message::newInstance()
                   ->setSubject('Hello world')
                   ->setFrom(array('john.doe@example.org' => 'John Doe'))
@@ -55,7 +76,8 @@ echo $mailer->send($message) ? "success" : "fail";
 
 **More info**
 
- - [ Transport](li3_swiftmailer/mailer/Transport)
+ - [ Transports](li3_swiftmailer/mailer/Transports)
+ - [ Message](li3_swiftmailer/mailer/Message)
  - [ Smtp](li3_swiftmailer/extensions/adapter/mailer/transport/Smtp)
  - [ Sendmail](li3_swiftmailer/extensions/adapter/mailer/transport/Sendmail)
  - [ PhpMail](li3_swiftmailer/extensions/adapter/mailer/transport/PhpMail)
