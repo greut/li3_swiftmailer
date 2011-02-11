@@ -22,11 +22,11 @@ class TransportTest extends \lithium\test\Unit {
 		$transport = $mailer->getTransport();
 		$this->assert($transport);
 
-		$this->assert('smtp.example.org', $transport->getHost());
-		$this->assert(25, $transport->getPort());
-		$this->assert('tls', $transport->getEncryption());
-		$this->assert('john.doe', $transport->getUsername());
-		$this->assert('password', $transport->getPassword());
+		$this->assertEqual('smtp.example.org', $transport->getHost());
+		$this->assertEqual(25, $transport->getPort());
+		$this->assertEqual('tls', $transport->getEncryption());
+		$this->assertEqual('john.doe', $transport->getUsername());
+		$this->assertEqual('password', $transport->getPassword());
 	}
 
 	public function test_sendmail() {
@@ -40,8 +40,8 @@ class TransportTest extends \lithium\test\Unit {
 
 		$transport = $mailer->getTransport();
 		$this->assert($transport);
-        
-		$this->assert('/usr/sbin/sendmail -bs -i', $transport->getCommand());
+
+		$this->assertEqual('/usr/sbin/sendmail -bs -i', $transport->getCommand());
 	}
 
 	public function test_mail() {

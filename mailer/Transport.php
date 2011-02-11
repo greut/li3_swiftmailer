@@ -20,7 +20,7 @@ abstract class Transport extends \lithium\core\Object {
 	protected function _init() {
 		$this->_classes += array(
 			'transport' => '\Swift_MailTransport',
-			'mailer' => '\li3_swiftmailer\mailer\Mailer'
+			'mailer' => 'li3_swiftmailer\\mailer\\Mailer'
 		);
 		return parent::_init();
 	}
@@ -31,8 +31,10 @@ abstract class Transport extends \lithium\core\Object {
 
 	protected function _config() {
 		$transport = $this->get_transport();
-		foreach($this->config as $key => $value) {
-			$transport->{"set" . ucfirst($key)}($config[$value]);
+		foreach($this->config as $key) {
+			if (isset($this->_config[$key])) {
+				$transport->{"set" . ucfirst($key)}($this->_config[$key]);
+			}
 		}
 	}
 

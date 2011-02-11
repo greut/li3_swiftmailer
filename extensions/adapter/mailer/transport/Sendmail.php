@@ -7,7 +7,7 @@ namespace li3_swiftmailer\extensions\adapter\mailer\transport;
  */
 class Sendmail extends \li3_swiftmailer\mailer\Transport
 {
-	protected $_classes = array('command');
+	protected $config = array('command');
 
 	protected function _init() {
 		$this->_classes += array(
