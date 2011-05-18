@@ -10,7 +10,7 @@ abstract class Transport extends \lithium\core\Object {
 	protected $_transport;
 	protected $_classes = array();
 	protected $_config = array();
-	protected $autoConfig = array('classes', 'config');
+	protected $_autoConfig = array('classes', 'config');
 
 	/**
 	 * Keys to set within config
@@ -19,8 +19,8 @@ abstract class Transport extends \lithium\core\Object {
 	
 	protected function _init() {
 		$this->_classes += array(
-			'transport' => '\Swift_MailTransport',
-			'mailer' => 'li3_swiftmailer\\mailer\\Mailer'
+			'transport' => '\\Swift_MailTransport',
+			'mailer' => 'li3_swiftmailer\\mailer\\Mailer',
 		);
 		return parent::_init();
 	}
@@ -53,13 +53,6 @@ abstract class Transport extends \lithium\core\Object {
 			$this->_mailer = $mailer::newInstance($this->get_transport());
 		}
 		return $this->_mailer;
-	}
-
-	public function __get($name) {
-		if ($name === 'mailer') {
-			return $this->get_mailer();
-		}
-		throw new \Exception("{$name} is undefined");
 	}
 }
 

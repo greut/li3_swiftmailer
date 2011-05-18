@@ -7,13 +7,6 @@ namespace li3_swiftmailer\mailer;
  */
 class Transports extends \lithium\core\Adaptable {
 	/**
-	 * A Collection of the configurations you add through Transport::config().
-	 *
-	 * @var Collection
-	 */
-	protected static $_configurations = array();
-
-	/**
 	 * Libraries::locate() compatible path to adapters for this class.
 	 *
 	 * @see lithium\core\Libraries::locate()
@@ -22,16 +15,16 @@ class Transports extends \lithium\core\Adaptable {
 	protected static $_adapters = 'adapter.mailer.transport';
 
 	/**
-	 * Get a mailer `adapter` from the configuration.
+	 * Override adapter creation
 	 *
-	 * @param string $name configuration to set up
-	 * @return object mailer
+	 * @see lithium\core\Adaptable::_initAdapter()
 	 */
-	public static function get($name) {
-		$config = static::config($name);
-		$transport = static::adapter($name);
-		$transport->config($config);
-		return $transport->mailer;
+	protected static function _initAdapter($class, array $config) {
+		return static::_filter(__FUNCTION__, compact('class', 'config'), function($self, $params) {
+			$transport = new $params['class']($params['config']);
+			$transport->config($params['config']);
+			return $transport->get_mailer();
+		});
 	}
 }
 

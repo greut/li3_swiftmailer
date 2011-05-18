@@ -11,7 +11,7 @@ class Sendmail extends \li3_swiftmailer\mailer\Transport
 
 	protected function _init() {
 		$this->_classes += array(
-			'transport' => '\Swift_SendmailTransport',
+			'transport' => '\\Swift_SendmailTransport',
 		);
 		return parent::_init();
 	}

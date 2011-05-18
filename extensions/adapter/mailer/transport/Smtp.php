@@ -11,7 +11,7 @@ class Smtp extends \li3_swiftmailer\mailer\Transport
 
 	protected function _init() {
 		$this->_classes += array(
-			'transport' => '\Swift_SmtpTransport',
+			'transport' => '\\Swift_SmtpTransport',
 		);
 		return parent::_init();
 	}

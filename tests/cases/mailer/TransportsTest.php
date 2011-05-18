@@ -4,19 +4,19 @@ namespace li3_swiftmailer\tests\cases\mailer;
 
 use li3_swiftmailer\mailer\Transports;
 
-class TransportTest extends \lithium\test\Unit {
+class TransportsTest extends \lithium\test\Unit {
 
 	public function test_smtp() {
-		Transports::config(array('default' => array('test' => array(
+		Transports::config(array('default' => array(
 			'adapter' => 'Smtp',
 			'host' => 'smtp.example.org',
 			'port' => 25,
 			'encryption' => 'tls',
 			'username' => 'john.doe',
 			'password' => 'password'
-		))));
+		)));
 
-		$mailer = Transports::get('default');
+		$mailer = Transports::adapter('default');
 		$this->assert($mailer);
 
 		$transport = $mailer->getTransport();
@@ -35,7 +35,7 @@ class TransportTest extends \lithium\test\Unit {
 			'command' => '/usr/sbin/sendmail -bs -i',
 		))));
 
-		$mailer = Transports::get('default');
+		$mailer = Transports::adapter('default');
 		$this->assert($mailer);
 
 		$transport = $mailer->getTransport();
@@ -49,13 +49,17 @@ class TransportTest extends \lithium\test\Unit {
 			'adapter' => 'PhpMail'
 		))));
 
-		$mailer = Transports::get('default');
+		$mailer = Transports::adapter('default');
 		$this->assert($mailer);
 		
 		$transport = $mailer->getTransport();
 		$this->assert($transport);
 	}
 
+	public function test_unknown() {
+		$this->expectException();
+		$mailer = Transports::adapter('foo');
+	}
 }
 
 # vim: ts=4 noet
