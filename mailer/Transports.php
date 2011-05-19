@@ -5,7 +5,15 @@ namespace li3_swiftmailer\mailer;
 /**
  * Manages transport for mailers
  */
-class Transports extends \lithium\core\Adaptable {
+class Transports extends \lithium\core\Adaptable
+{
+	/**
+	 * To be re-defined in sub-classes.
+	 *
+	 * @var object `Collection` of configurations, indexed by name.
+	 */
+	protected static $_configurations = array();
+
 	/**
 	 * Libraries::locate() compatible path to adapters for this class.
 	 *
