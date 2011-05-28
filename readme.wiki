@@ -73,7 +73,7 @@ Transports::config(array('default' => array(
 use li3_swiftmailer\mailer\Transports;
 use li3_swiftmailer\mailer\Message;
 
-$mailer = Transports::get('default');
+$mailer = Transports::adapter('default');
 $message = Message::newInstance()
                   ->setSubject('Hello world')
                   ->setFrom(array('john.doe@example.org' => 'John Doe'))
