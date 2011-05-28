@@ -3,10 +3,11 @@
 use \lithium\core\Libraries;
 
 if (!defined('SWIFTMAILER_LIBRARY_PATH')) {
-	define(
-		'SWIFTMAILER_LIBRARY_PATH',
-		LITHIUM_LIBRARY_PATH . '/swiftmailer/lib'
-	);
+	$path = '/swiftmailer/lib';
+	$path = file_exists(LITHIUM_LIBRARY_PATH.$path) ?
+		LITHIUM_LIBRARY_PATH.$path :
+		LITHIUM_APP_PATH.'/libraries'.$path;
+	define('SWIFTMAILER_LIBRARY_PATH', $path);
 }
 
 require SWIFTMAILER_LIBRARY_PATH . '/swift_required.php';
