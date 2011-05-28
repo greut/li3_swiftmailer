@@ -1,3 +1,14 @@
+### Installation
+
+Put [ li3_swiftmailer](https://github.com/greut/li3_swiftmailer) and [ SwiftMailer](http://swiftmailer.org/) into your `libraries` directory.
+
+{{{
+$ git submodule add https://github.com/greut/li3_swiftmailer.git libraries/li3_swiftmailer
+$ git submodule add https://github.com/swiftmailer/swiftmailer.git libraries/swiftmailer
+}}}
+
+Putting them into your `app` should work as well.
+
 ### Configuration
 
 In your `config/bootstrap/libraries.php` add this line:
