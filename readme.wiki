@@ -26,8 +26,8 @@ use li3_swiftmailer\mailer\Transports;
 
 Transports::config(array('default' => array(
     'adapter' => 'Smtp',
-    'host' => 'smtp.google.com',
-    'port' => 587,
+    'host' => 'smtp.gmail.com',
+    'port' => 465,
     'encryption' => 'tls',
     'username' => 'you@gmail.com',
     'password' => '#########'
