@@ -30,7 +30,9 @@ Transports::config(array('default' => array(
     'port' => 465,
     'encryption' => 'tls',
     'username' => 'you@gmail.com',
-    'password' => '#########'
+    'password' => '#########',
+    //'domain' => 'your.server', // Used during the EHLO phase
+                                 // leave empty if unsure.
 )));
 }}}
 
