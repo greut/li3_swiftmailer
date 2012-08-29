@@ -18,7 +18,7 @@ $library = Libraries::get($name);
 if (empty($library)) {
 	Libraries::add($name, array(
 		'bootstrap' => false,
-		'path' => SWIFTMAILER_LIBRARY_PATH,
+		'path' => SWIFTMAILER_LIBRARY_PATH . '/classes',
 		'prefix' => 'Swift_'
 	));
 }
