@@ -1,0 +1,19 @@
+{
+	"name": "djordje/li3_swiftmailer",
+	"type": "lithium-library",
+	"description": "Lithium wrapper for swiftmailer",
+	"keywords": ["php", "swift", "mail","lithium", "li3"],
+	"homepage": "https://github.com/djordje/li3_usermanager",
+	"license": "BSD-3-Clause",
+	"minimum-stability": "dev",
+	"authors": [
+		{
+			"name": "Yoan Blanc",
+			"homepage": "https://github.com/greut/li3_swiftmailer"
+		}
+	],
+	"require": {
+		"php": ">=5.3",
+		"composer/installers": "dev-master",
+	}
+}
