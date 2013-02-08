@@ -30,8 +30,7 @@ $library = Libraries::get($name);
 if (empty($library)) {
 	Libraries::add($name, array(
 		'bootstrap' => 'swift_required.php',
-		'path' => SWIFTMAILER_LIBRARY_PATH,
-		'prefix' => 'Swift_'
+		'path' => SWIFTMAILER_LIBRARY_PATH
 	));
 }
 
