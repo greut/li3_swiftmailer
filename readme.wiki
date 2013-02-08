@@ -17,7 +17,7 @@ In your `config/bootstrap/libraries.php` add this line:
 Libraries::add('li3_swiftmailer');
 }}}
 
-And then configure who do you want to use the Mailer using `li3_swiftmailer\mailer\Transport`.
+And then configure who do you want to use the Mailer using `li3_swiftmailer\mailer\Transports`.
 
 #### SMTP
 
@@ -27,7 +27,7 @@ use li3_swiftmailer\mailer\Transports;
 Transports::config(array('default' => array(
     'adapter' => 'Smtp',
     'host' => 'smtp.gmail.com',
-    'port' => 465,
+    'port' => 587,
     'encryption' => 'tls',
     'username' => 'you@gmail.com',
     'password' => '#########',
